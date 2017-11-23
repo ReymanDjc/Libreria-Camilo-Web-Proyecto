@@ -6,48 +6,62 @@
 <head runat="server">
     <%--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"/>--%>
     <meta charset="utf-8">
-   <meta lang="es-ES">
-   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-   <meta name="description" content="LibreriaCamilo">
-   <meta name="author" content="Reyman Djc">
-   <link rel="icon" href="favicon.ico">
-   <title></title>
+    <meta lang="es-ES">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="LibreriaCamilo">
+    <meta name="author" content="Reyman Djc">
+    <link rel="icon" href="favicon.ico">
+    <title></title>
 
-   <!-- Bootstrap 4.0.0 -->
-   <link href="Content/bootstrap.min.css" rel="stylesheet">
-   <!-- Bootswatch cereule theme-->
-   <link href="Estilos/Estilos.css" rel="stylesheet">
+    <!-- Bootstrap 4.0.0 -->
+    <link href="Content/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootswatch cereule theme-->
+    <link href="Estilos/Estilos.css" rel="stylesheet">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    
+
     <img src="WebHtml.jpg" />
-    <nav class="navbar navbar-expand-lg navbar-dark bg-info">
-        <a class="navbar-brand" href="#"><strong>Libreria Camilo</strong></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <%--<a class="nav-item nav-link active" href="#"><span class="sr-only">(current)</span></a>--%>
-                <a class="nav-item nav-link" href="#">Registros</a>
-                <a class="nav-item nav-link" href="#">Consultas</a>
-                <a class="nav-item nav-link" href="#">Reportes</a>
-            </div>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="UI/Registros/rUsuarios.aspx">Registro</a>
+                        <a class="dropdown-item" href="UI/Consultas/cUsuarios.aspx">Consulta</a>
+                    </div>
+                </li>
+            </ul>
         </div>
     </nav>
+
+
+
     <div class="container">
 
-    
-    <form id="form1" runat="server">
-        <div>
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
-        </div>
-    </form>
+
+        <form id="form1" runat="server">
+            <div>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </form>
     </div>
     <script src="Scripts/jquery-3.2.1.slim.min.js"></script>
-   <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
 </body>
 </html>

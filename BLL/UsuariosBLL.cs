@@ -28,6 +28,15 @@ namespace BLL
 			return false;
 		}
 
+		public static bool Authenticar(Usuarios usuario)
+		{
+			using (var conec = new Repository<Usuarios>())
+			{
+
+			}
+		
+			return false;
+		}
 
 		public static bool Eliminar(Usuarios usuario)
 		{

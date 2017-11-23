@@ -1,17 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="rUsuarios.aspx.cs" Inherits="LibreriaCamiloWeb.UI.Registros.rUsuarios" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Base.Master" AutoEventWireup="true" CodeBehind="rUsuarios.aspx.cs" Inherits="LibreriaCamiloWeb.UI.Registros.Form" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"/>
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div class="Container-fluid">
-            <img src="WebHtml.jpg" />
-            <div class="col-4">
+<div class="Container-fluid">
+            <div class="align-content-center">
                 <div>
                    <table>
                        <tr>
@@ -22,14 +15,15 @@
                        </tr>
                        <tr>
                            <td>
-                               <asp:TextBox ID="UsuarioIdTextBox" runat="server" class="form-control" Height="30"  Width="200"></asp:TextBox>
+                               <asp:TextBox ID="UsuarioIdTextBox" runat="server" class="form-control" Height="30"  Width="200" ValidationGroup="Buscar"></asp:TextBox>
                            </td>
                            <td>
-                              &nbsp&nbsp&nbsp&nbsp <asp:Button ID="BuscarButton" runat="server" class="btn btn-info" Text="Buscar" OnClick="BuscarButton_Click" />
+                              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<asp:Button ID="BuscarButton" runat="server" class="btn btn-info" Text="Buscar" OnClick="BuscarButton_Click" ValidationGroup="Buscar" />
                            </td>
                        </tr>
                    </table>                
                </div> 
+                <br/>
                 <div>
                     <table>
                         <tr>
@@ -39,7 +33,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <asp:TextBox ID="NombreTextBox" runat="server" class="form-control" Height="30"  Width="300"></asp:TextBox>
+                                <asp:TextBox ID="NombreTextBox" runat="server" class="form-control" Height="30"  Width="300" ></asp:TextBox>
                             </td>
                             <td>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Llenar Campos Vacios" ForeColor="Red" ControlToValidate="NombreTextBox" Font-Bold="True">*</asp:RequiredFieldValidator>
@@ -47,6 +41,7 @@
                         </tr>
                     </table>
                </div> 
+                <br />
                 <div>
                     <table>
                         <tr>
@@ -64,6 +59,7 @@
                         </tr>
                     </table>
                </div> 
+                <br />
                 <div>
                     <table>
                         <tr>
@@ -81,6 +77,7 @@
                         </tr>
                     </table>
                </div>
+                <br />
                 <div>
                     <table>
                         <tr>
@@ -98,17 +95,16 @@
                         </tr>
                     </table>                  
                </div>
+
                 <div>
                 <br />
-                    <asp:Button ID="NuevoButton" runat="server" class="btn btn-info" Text="Nuevo" OnClick="NuevoButton_Click" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                    <asp:Button ID="GuardarButton" runat="server" class="btn btn-info" Text="Guardar" OnClick="GuardarButton_Click" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                    <asp:Button ID="EliminarButton" runat="server" class="btn btn-info" Text="Eliminar" OnClick="EliminarButton_Click" />         
+                    <asp:Button ID="NuevoButton" runat="server"  class="btn btn-info" Text="Nuevo" OnClick="NuevoButton_Click" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    <asp:Button ID="GuardarButton" runat="server" class="btn btn-info" Text="Guardar" OnClick="GuardarButton_Click" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    <asp:Button ID="EliminarButton" runat="server" class="btn btn-info" Text="Eliminar" OnClick="EliminarButton_Click" />   
                 </div>
 
             </div>
 
         </div>
         <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
-    </form>
-</body>
-</html>
+</asp:Content>

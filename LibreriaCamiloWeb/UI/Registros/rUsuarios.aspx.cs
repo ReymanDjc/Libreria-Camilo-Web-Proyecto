@@ -10,7 +10,7 @@ using System.Web.UI.WebControls;
 
 namespace LibreriaCamiloWeb.UI.Registros
 {
-	public partial class rUsuarios : System.Web.UI.Page
+	public partial class Form : System.Web.UI.Page
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
@@ -37,10 +37,8 @@ namespace LibreriaCamiloWeb.UI.Registros
 			return usuario;
 		}
 
-
 		protected void BuscarButton_Click(object sender, EventArgs e)
 		{
-
 			int id = Utilidades.TOINT(UsuarioIdTextBox.Text);
 			var usuario = new Usuarios();
 
@@ -55,10 +53,8 @@ namespace LibreriaCamiloWeb.UI.Registros
 			}
 			else
 			{
-				//MessageBox.Show("No existe.");
 				Limpiar();
 			}
-
 		}
 
 		protected void NuevoButton_Click(object sender, EventArgs e)
@@ -68,7 +64,6 @@ namespace LibreriaCamiloWeb.UI.Registros
 
 		protected void GuardarButton_Click(object sender, EventArgs e)
 		{
-
 			Usuarios usuario = new Usuarios();
 			int id = 0;
 			usuario = Llenar();
@@ -77,22 +72,15 @@ namespace LibreriaCamiloWeb.UI.Registros
 				if (id != usuario.UsuarioId)
 				{
 					UsuariosBLL.Modificar(usuario);
-					//MessageBox.Show("Usuario modificado con exito");
 				}
 				else
 				{
 					UsuariosBLL.Guardar(usuario);
-					//MessageBox.Show("Nuevo usuario agregado!");
 				}
 			}
 			else
 			{
-				/*CamposVacioserrorProvider.SetError(ClavetextBox, "Campos no son iguales");
-				CamposVacioserrorProvider.SetError(ConfirmartextBox, "Campos no son iguales");
-				MessageBox.Show("CAMPOS No Coinciden");*/
 			}
-			//UsuariosBLL.Guardar(usuario);
-
 		}
 
 		protected void EliminarButton_Click(object sender, EventArgs e)
@@ -102,11 +90,9 @@ namespace LibreriaCamiloWeb.UI.Registros
 			if (UsuariosBLL.Eliminar(UsuariosBLL.Buscar(p => p.UsuarioId == id)))
 			{
 				Limpiar();
-				//MessageBox.Show("El Usuario se elimino con exito.");
 			}
 			else
 			{
-				//MessageBox.Show("El Usuario no se pudo eliminar.");
 			}
 		}
 	}
