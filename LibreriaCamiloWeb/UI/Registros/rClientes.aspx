@@ -69,7 +69,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <asp:TextBox ID="EmailTextBox" runat="server" class="form-control" Height="30"  Width="300"></asp:TextBox>
+                                <asp:TextBox ID="EmailTextBox" runat="server" TextMode="Email" class="form-control" Height="30"  Width="300"></asp:TextBox>
                             </td>
                             <td>
                                 <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Llenar Campos Vacios" ControlToValidate="ConfirmarClaveTextBox" ForeColor="Red" Font-Bold="True">*</asp:RequiredFieldValidator>--%>

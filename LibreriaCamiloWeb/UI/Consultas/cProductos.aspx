@@ -18,7 +18,7 @@
                                 &nbsp&nbsp<asp:TextBox ID="FiltrarTextBox" runat="server" class="form-control" Height="30"  Width="150"></asp:TextBox>&nbsp&nbsp
                             </td>
                             <td>
-                                &nbsp&nbsp<asp:Button ID="FiltrarButton" runat="server" class="btn btn-info" Text="Filtrar" />&nbsp&nbsp
+                                &nbsp&nbsp<asp:Button ID="FiltrarButton" runat="server" class="btn btn-info" Text="Filtrar" OnClick="FiltrarButton_Click" />&nbsp&nbsp
                             </td>
                             <td>
                                 <asp:Button ID="ImprimirButton" runat="server" class="btn btn-info" Text="Imprimir" />
