@@ -43,5 +43,10 @@ namespace LibreriaCamiloWeb.UI.Consultas
 				ProductosGridView.DataBind();
 			}
 		}
+
+		protected void ImprimirButton_Click(object sender, EventArgs e)
+		{
+			Response.Redirect("../Reportes/ReporteProducto.aspx");
+		}
 	}
 }

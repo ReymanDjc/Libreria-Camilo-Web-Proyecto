@@ -21,7 +21,7 @@
                                 &nbsp&nbsp<asp:Button ID="FiltrarButton" runat="server" class="btn btn-info" Text="Filtrar" OnClick="FiltrarButton_Click" />&nbsp&nbsp
                             </td>
                             <td>
-                                <asp:Button ID="ImprimirButton" runat="server" class="btn btn-info" Text="Imprimir" />
+                                <asp:Button ID="ImprimirButton" runat="server" class="btn btn-info" Text="Imprimir" OnClick="ImprimirButton_Click" />
                             </td>
                         </tr>
 

@@ -63,7 +63,7 @@ namespace LibreriaCamiloWeb.UI.Consultas
 
 		protected void ImprimirButton_Click(object sender, EventArgs e)
 		{
-			//Response.Redirect("../Reportes/rUsuarios.aspx");
+			Response.Redirect("../Reportes/ReporteUsuario.aspx");
 		}
 	}
 }
