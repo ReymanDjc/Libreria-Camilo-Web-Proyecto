@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibreriaCamilo;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,7 @@ namespace LibreriaCamiloWeb
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-
+			//Utilidades.ShowToastr(this, "Bienvenidos", "Hola", "info");
 		}
 	}
 }

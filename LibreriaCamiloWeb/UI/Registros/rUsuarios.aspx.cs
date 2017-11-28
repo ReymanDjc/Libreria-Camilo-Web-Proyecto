@@ -50,9 +50,11 @@ namespace LibreriaCamiloWeb.UI.Registros
 				ClaveTextBox.Text = usuario.Clave;
 				ConfirmarClaveTextBox.Text = usuario.ConfirmarClave;
 				FechaTextBox.Text = usuario.Fecha.ToString();
+				Utilidades.ShowToastr(this, "Encontrado", "Usuario", "info");
 			}
 			else
 			{
+				Utilidades.ShowToastr(this, "No Encontrado", "Usuario", "error");
 				Limpiar();
 			}
 		}
@@ -72,10 +74,14 @@ namespace LibreriaCamiloWeb.UI.Registros
 				if (id != usuario.UsuarioId)
 				{
 					UsuariosBLL.Modificar(usuario);
+					Utilidades.ShowToastr(this, "Modificado", "Usuario", "info");
+					Limpiar();
 				}
 				else
 				{
 					UsuariosBLL.Guardar(usuario);
+					Utilidades.ShowToastr(this, "Guardado", "Usuario", "info");
+					Limpiar();
 				}
 			}
 			else
@@ -89,10 +95,12 @@ namespace LibreriaCamiloWeb.UI.Registros
 
 			if (UsuariosBLL.Eliminar(UsuariosBLL.Buscar(p => p.UsuarioId == id)))
 			{
+				Utilidades.ShowToastr(this, "Eliminado", "Usuario", "info");
 				Limpiar();
 			}
 			else
 			{
+				Utilidades.ShowToastr(this, "No Eliminado", "Usuario", "error");
 			}
 		}
 	}

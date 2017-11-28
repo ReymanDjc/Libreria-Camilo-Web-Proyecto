@@ -76,6 +76,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clientes.cs" />
+    <Compile Include="Facturas.cs" />
+    <Compile Include="FacturasProductos.cs" />
     <Compile Include="Productos.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>

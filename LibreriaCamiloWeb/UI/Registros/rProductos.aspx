@@ -19,7 +19,7 @@
                         <td>
                             <asp:TextBox ID="ProductoIdTextBox" runat="server" class="form-control" Height="30" Width="200" ValidationGroup="Buscar"></asp:TextBox>
                         </td>
-                        <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<asp:Button ID="BuscarButton" runat="server" class="btn btn-info" Text="Buscar" OnClick="BuscarButton_Click" />
+                        <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<asp:Button ID="BuscarButton" runat="server" class="btn btn-info" Text="Buscar" OnClick="BuscarButton_Click" ValidationGroup="Buscar" />
                         </td>
                     </tr>
                 </table>
@@ -35,10 +35,10 @@
                     </tr>
                     <tr>
                         <td>
-                            <asp:TextBox ID="DescripcionTextBox" runat="server" class="form-control" Height="30" Width="300"></asp:TextBox>
+                            <asp:TextBox ID="DescripcionTextBox" runat="server" class="form-control" Height="30" Width="300" MaxLength="50"></asp:TextBox>
                         </td>
                         <td>
-                            <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Llenar Campos Vacios" ForeColor="Red" ControlToValidate="NombreTextBox" Font-Bold="True">*</asp:RequiredFieldValidator>--%>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Campos Obligatorios" Font-Bold="True" ForeColor="Red" ControlToValidate="DescripcionTextBox">*</asp:RequiredFieldValidator>
                         </td>
                     </tr>
                 </table>
@@ -54,10 +54,11 @@
                     </tr>
                     <tr>
                         <td>
-                            <asp:TextBox ID="CostoTextBox" runat="server" class="form-control" Height="30" Width="300"></asp:TextBox>
+                            <asp:TextBox ID="CostoTextBox" runat="server" class="form-control" Height="30" Width="300" MaxLength="5"></asp:TextBox>
                         </td>
                         <td>
-                            <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Llenar Campos Vacios" ControlToValidate="ClaveTextBox" ForeColor="Red" Font-Bold="True">*</asp:RequiredFieldValidator>--%>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Campos Obligatorios" Font-Bold="True" ForeColor="Red" ControlToValidate="CostoTextBox">*</asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Solo Numeros" ControlToValidate="CostoTextBox" Font-Bold="True" ForeColor="Red" ValidationExpression="([0-9]|-)*">*</asp:RegularExpressionValidator>
                         </td>
                     </tr>
                 </table>
@@ -73,10 +74,11 @@
                     </tr>
                     <tr>
                         <td>
-                            <asp:TextBox ID="PrecioTextBox" runat="server" class="form-control" Height="30" Width="300"></asp:TextBox>
+                            <asp:TextBox ID="PrecioTextBox" runat="server" class="form-control" Height="30" Width="300" MaxLength="6"></asp:TextBox>
                         </td>
                         <td>
-                            <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Llenar Campos Vacios" ControlToValidate="ConfirmarClaveTextBox" ForeColor="Red" Font-Bold="True">*</asp:RequiredFieldValidator>--%>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Campos Obligatorios" Font-Bold="True" ForeColor="Red" ControlToValidate="PrecioTextBox">*</asp:RequiredFieldValidator> 
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="Solo Numeros" ControlToValidate="PrecioTextBox" Font-Bold="True" ForeColor="Red" ValidationExpression="([0-9]|-)*">*</asp:RegularExpressionValidator>
                         </td>
                     </tr>
                 </table>
@@ -92,10 +94,11 @@
                     </tr>
                     <tr>
                         <td>
-                            <asp:TextBox ID="CantidadTextBox" runat="server" TextMode="Number" class="form-control" Height="30" Width="300"></asp:TextBox>
+                            <asp:TextBox ID="CantidadTextBox" runat="server" TextMode="Number" class="form-control" Height="30" Width="300" MaxLength="2"></asp:TextBox>
                         </td>
                         <td>
-                            <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Llenar Campos Vacios" ControlToValidate="FechaTextBox" ForeColor="Red" Font-Bold="True">*</asp:RequiredFieldValidator>--%>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Campos Obligatorios" Font-Bold="True" ForeColor="Red" ControlToValidate="CantidadTextBox">*</asp:RequiredFieldValidator>
+                            
                         </td>
                     </tr>
                 </table>
@@ -103,7 +106,7 @@
 
             <div>
                 <br />
-                <asp:Button ID="NuevoButton" runat="server" class="btn btn-info" Text="Nuevo" OnClick="NuevoButton_Click" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                <asp:Button ID="NuevoButton" runat="server" class="btn btn-info" Text="Nuevo" OnClick="NuevoButton_Click" ValidationGroup="Nuevo" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                     <asp:Button ID="GuardarButton" runat="server" class="btn btn-info" Text="Guardar" OnClick="GuardarButton_Click" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                     <asp:Button ID="EliminarButton" runat="server" class="btn btn-info" Text="Eliminar" OnClick="EliminarButton_Click" />
             </div>
@@ -111,5 +114,11 @@
         </div>
 
     </div>
+    <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" />
+     <script src="/Scripts/bootstrap.min.js"></script>
+    <script src="/Scripts/jquery-2.2.0.min.js"></script>
+    <link href="/Content/toastr.min.css" rel="stylesheet" />
+    <script src="/Scripts/toastr.min.js"></script>
+    <script src="/Scripts/jquery-3.2.1.slim.min.js"></script>
 
 </asp:Content>

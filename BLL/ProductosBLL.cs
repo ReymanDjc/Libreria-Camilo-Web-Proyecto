@@ -130,6 +130,25 @@ namespace BLL
 		}
 
 
+		public static Productos BuscarRelacion(int id)
+		{
+			Productos estudiante = null;
+			using (var conexion = new LibreriaCamiloDb())
+			{
+				try
+				{
+					estudiante = conexion.Productos.Find(id);
+				}
+				catch (Exception)
+				{
+
+					throw;
+				}
+			}
+			return estudiante;
+		}
+
+
 
 	}
 }

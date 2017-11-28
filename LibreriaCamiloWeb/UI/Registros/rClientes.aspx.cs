@@ -46,10 +46,13 @@ namespace LibreriaCamiloWeb.UI.Registros
 			if (id != cliente.ClienteId)
 			{
 				ClientesBLL.Modificar(cliente);
+				Utilidades.ShowToastr(this, "Modificado", "Cliente", "info");
+				Limpiar();
 			}
 			else
 			{
 				ClientesBLL.Guardar(cliente);
+				Utilidades.ShowToastr(this, "Guardado", "Cliente", "info");
 				Limpiar();
 			}
 
@@ -61,10 +64,12 @@ namespace LibreriaCamiloWeb.UI.Registros
 
 			if (ClientesBLL.Eliminar(ClientesBLL.Buscar(p => p.ClienteId == id)))
 			{
+				Utilidades.ShowToastr(this, "Eliminado", "Cliente", "info");
 				Limpiar();
 			}
 			else
 			{
+				Utilidades.ShowToastr(this, "No Eliminado", "Cliente", "error");
 			}
 		}
 
@@ -86,9 +91,11 @@ namespace LibreriaCamiloWeb.UI.Registros
 				DireccionTextBox.Text = cliente.Direccion;
 				EmailTextBox.Text = cliente.Email;
 				TelefonoTextBox.Text = cliente.Telefono;
+				Utilidades.ShowToastr(this, "Encontrado", "Cliente", "info");
 			}
 			else
 			{
+				Utilidades.ShowToastr(this, "No Encontrado", "Cliente", "error");
 				Limpiar();
 			}
 

@@ -76,6 +76,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClientesBLL.cs" />
+    <Compile Include="FacturasProductosBLL.cs" />
+    <Compile Include="FacturasBLL.cs" />
     <Compile Include="ProductosBLL.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>

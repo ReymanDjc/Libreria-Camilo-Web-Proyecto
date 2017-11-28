@@ -45,10 +45,13 @@ namespace LibreriaCamiloWeb.UI.Registros
 			if (id != producto.ProductoId)
 			{
 				ProductosBLL.Modificar(producto);
+				Utilidades.ShowToastr(this, "Modificado", "Producto", "info");
+				Limpiar();
 			}
 			else
 			{
 				ProductosBLL.Guardar(producto);
+				Utilidades.ShowToastr(this, "Guardado", "Producto", "info");
 				Limpiar();
 			}
 		}
@@ -59,10 +62,12 @@ namespace LibreriaCamiloWeb.UI.Registros
 
 			if (ProductosBLL.Eliminar(ProductosBLL.Buscar(p => p.ProductoId == id)))
 			{
+				Utilidades.ShowToastr(this, "Eliminado", "Producto", "info");
 				Limpiar();
 			}
 			else
 			{
+				Utilidades.ShowToastr(this, "No Eliminado", "Producto", "Error");
 			}
 		}
 
@@ -84,9 +89,11 @@ namespace LibreriaCamiloWeb.UI.Registros
 				CostoTextBox.Text = Convert.ToString(producto.Costo);
 				PrecioTextBox.Text = Convert.ToString(producto.Precio);
 				CantidadTextBox.Text = Convert.ToString(producto.Cantidad);
+				Utilidades.ShowToastr(this, "Encontrado", "Producto", "info");
 			}
 			else
 			{
+				Utilidades.ShowToastr(this, "No Encontrado", "Producto", "Error");
 				Limpiar();
 			}
 		}
