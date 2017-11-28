@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibreriaCamilo;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,7 +18,38 @@ namespace LibreriaCamiloWeb
 
 		protected void LoginButton_Click(object sender, EventArgs e)
 		{
-			FormsAuthentication.RedirectFromLoginPage("reyman", true);
-		}
+
+            var usuario = new Entidades.Usuarios();
+            usuario = BLL.UsuariosBLL.Buscar(b => b.Nombres == TextBox1.Text);
+            if(PasswordTextBox.Text != "")
+            {
+                if (usuario.Clave == PasswordTextBox.Text)
+                {
+
+
+
+                    FormsAuthentication.RedirectFromLoginPage(TextBox1.Text, true);
+
+
+
+
+                }
+                else
+                {
+
+                    Utilidades.ShowToastr(this, "Usuario y/o Contraseña Incorrectas", "ERROR", "info");
+
+                }
+            }
+            else
+            {
+                Utilidades.ShowToastr(this, "Usuario y/o Contraseña Incorrectas", "ERROR", "info");
+
+            }
+
+
+
+
+        }
 	}
 }

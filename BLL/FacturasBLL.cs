@@ -10,10 +10,40 @@ namespace BLL
 {
     public class FacturasBLL
     {
-		/*public static Facturas facturasReturned = null;
+        /*public static Facturas facturasReturned = null;
         public static List<Facturas> facturasReturnedList = null;*/
 
-		public static bool Guardar(Entidades.Facturas Facturag, List<Entidades.FacturasProductos> listaRelaciones)
+
+        public static bool EliminarRelacion(Entidades.Facturas facturaG)
+
+        {
+            using (var repositorio = new DAL.Repository<Entidades.Facturas>())
+            {
+                bool relacionesEliminadas = true;
+
+                List<Entidades.FacturasProductos> listaRelaciones = BLL.FacturasProductosBLL.GetList(R => R.FacturaId == facturaG.FacturaId);
+
+                foreach (var relacion in listaRelaciones)
+                {
+                    if (!FacturasProductosBLL.Eliminar(relacion))
+                    {
+                        relacionesEliminadas = false;
+                    }
+                }
+
+                if (relacionesEliminadas)
+                {
+                    return repositorio.Eliminar(facturaG);
+                }
+                return false;
+
+            }
+
+        }
+
+
+
+        public static bool Guardar(Entidades.Facturas Facturag, List<Entidades.FacturasProductos> listaRelaciones)
 		{
 			using (var repositorio = new DAL.Repository<Entidades.Facturas>())
 			{

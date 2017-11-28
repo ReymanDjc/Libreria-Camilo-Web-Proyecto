@@ -82,8 +82,8 @@ namespace LibreriaCamiloWeb.UI.Registros
 
 			foreach (GridViewRow dr in FacturaGridView.Rows)
 			{
-				detalle.AgregarDetalle(Convert.ToInt32(dr.Cells[0].Text), 0,0,
-			dr.Cells[1].Text, Convert.ToDecimal(dr.Cells[2].Text), Convert.ToDecimal(dr.Cells[3].Text)
+				detalle.AgregarDetalle(Utilidades.TOINT(dr.Cells[0].Text), 0,0,
+		     	dr.Cells[1].Text, Convert.ToDecimal(dr.Cells[2].Text), Convert.ToDecimal(dr.Cells[3].Text)
 				   );
 				cantidad++;
 			
@@ -261,5 +261,143 @@ namespace LibreriaCamiloWeb.UI.Registros
 
 			
 		}
-	}
+
+        private void Limpiar()
+        {
+            dt.Columns.AddRange(new DataColumn[4] { new DataColumn("ID Producto"), new DataColumn("Descripcion"), new DataColumn("Precio"), new DataColumn("Cantidad") });
+            ViewState["Detalle"] = dt;
+            
+            this.BindGrid();
+
+            TotalTextBox.Text = "";
+            ClienteIdTextBox.Text = "";
+            NombreTextBox.Text = "";
+            ProductoIdTextBox.Text = "";
+            DescripcionTextBox.Text = "";
+            PrecioTextBox.Text = "";
+            CantidadTextBox.Text = "";
+            SubtotalTextBox.Text = "";
+            ItbisTextBox.Text = "";
+            TotalTextBox.Text = "";
+          //  FacturaIdTextBox.Text = "";
+
+        }
+        protected void NuevoButton_Click(object sender, EventArgs e)
+        {
+            Limpiar();
+        }
+
+        protected void BuscarButton_Click(object sender, EventArgs e)
+        {
+
+            if (string.IsNullOrWhiteSpace(FacturaIdTextBox.Text))
+            {
+                Utilidades.ShowToastr(this, "ID Vacio", "Resultados", "error");
+
+            }
+            else
+            {
+                int id = Utilidades.TOINT(FacturaIdTextBox.Text);
+
+                facturaG = BLL.FacturasBLL.Buscar(f => f.FacturaId == id);
+                if (facturaG != null)
+                {
+
+                    Limpiar();
+                
+                    listaRelaciones = BLL.FacturasProductosBLL.GetList(A => A.FacturaId == facturaG.FacturaId);
+
+                    if (facturaG != null)
+                    {
+
+
+                        if (listaRelaciones.Count == 0)
+                        {
+                            Utilidades.ShowToastr(this, "No se ha registrado Articulos con este ID", "Resultados", "error");
+
+
+                        }
+                        else
+                        {
+
+                           
+
+                            foreach (var relacion in listaRelaciones)
+                            {
+                                listadoArticulos.Add(BLL.ProductosBLL.Buscar(A => A.ProductoId == relacion.ProductoId));
+                            }
+
+                            foreach (var articulo in listadoArticulos)
+                            {
+                                articulo.ProductoId = BLL.ProductosBLL.Buscar(A => A.ProductoId == articulo.ProductoId).ProductoId;
+                            }
+
+                            LlenarRegistro(listaRelaciones);
+
+
+                            Utilidades.ShowToastr(this, "Sus Resultados", "Resultados", "success");
+
+                        }
+
+                    }
+
+
+                }
+                else
+                {
+                    Utilidades.ShowToastr(this, "No existe factura", "Error", "error");
+                }
+            }
+
+
+
+        }
+
+        protected void EliminarButton_Click(object sender, EventArgs e)
+        {
+        
+           
+
+                if (string.IsNullOrWhiteSpace(FacturaIdTextBox.Text))
+                {
+
+                    Utilidades.ShowToastr(this, "Campo Id Vacio", "Error", "info");
+                }
+                else
+                {
+                    int id = Utilidades.TOINT(FacturaIdTextBox.Text);
+
+                    facturaG = BLL.FacturasBLL.Buscar(f => f.FacturaId == id);
+
+
+
+                    if (facturaG != null)
+                    {
+
+
+                        if (BLL.FacturasBLL.EliminarRelacion(facturaG))
+                        {
+
+                        Limpiar();
+
+                            facturaG = new Entidades.Facturas();
+                            Utilidades.ShowToastr(this, "Elimino Correctamente", "ELIMINADO", "success");
+
+                        }
+                        else
+                        {
+                            Utilidades.ShowToastr(this, "Problemas Al Eliminar", "Error", "error");
+                        }
+
+                    }
+                    else
+                    {
+                        Utilidades.ShowToastr(this, "No hay Factura", "Informacion", "info");
+                    }
+                }
+
+            
+
+        }
+    }
 }

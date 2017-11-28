@@ -3,6 +3,11 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+     <script src="/Scripts/bootstrap.min.js"></script>
+    <script src="/Scripts/jquery-2.2.0.min.js"></script>
+    <link href="/Content/toastr.min.css" rel="stylesheet" />
+    <script src="/Scripts/toastr.min.js"></script>
+    <script src="/Scripts/jquery-3.2.1.slim.min.js"></script>
     <div class="Container-fluid">
                 <div>
                    <table>
@@ -23,7 +28,7 @@
                                <asp:TextBox ID="FacturaIdTextBox" runat="server" class="form-control" Height="30"  Width="75" ValidationGroup="Buscar"></asp:TextBox>
                            </td>
                            <td>
-                              &nbsp&nbsp&nbsp&nbsp&nbsp<asp:Button ID="BuscarButton" runat="server" class="btn btn-info" Text="Buscar" ValidationGroup="Buscar" />&nbsp&nbsp&nbsp&nbsp
+                              &nbsp&nbsp&nbsp&nbsp&nbsp<asp:Button ID="BuscarButton" runat="server" class="btn btn-info" Text="Buscar" ValidationGroup="Buscar" OnClick="BuscarButton_Click" />&nbsp&nbsp&nbsp&nbsp
                            </td>
                            <td>
                                <asp:TextBox ID="FechaTextBox" runat="server" TextMode="Date" class="form-control" Height="30"  Width="200" ValidationGroup="Buscar"></asp:TextBox>
@@ -179,9 +184,9 @@
 
                 <div>
                 <br />
-                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<asp:Button ID="NuevoButton" runat="server" class="btn btn-info" Text="Nuevo" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<asp:Button ID="NuevoButton" runat="server" class="btn btn-info" Text="Nuevo" OnClick="NuevoButton_Click" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                     <asp:Button ID="GuardarButton" runat="server" class="btn btn-info" Text="Guardar" OnClick="GuardarButton_Click" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                    <asp:Button ID="EliminarButton" runat="server" class="btn btn-info" Text="Eliminar" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    <asp:Button ID="EliminarButton" runat="server" class="btn btn-info" Text="Eliminar" OnClick="EliminarButton_Click" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                     <asp:Button ID="ImprimirButton" runat="server" class="btn btn-info" Text="Imprimir" />
                 </div>
 

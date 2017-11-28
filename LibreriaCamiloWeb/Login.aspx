@@ -19,6 +19,11 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
+     <script src="/Scripts/bootstrap.min.js"></script>
+    <script src="/Scripts/jquery-2.2.0.min.js"></script>
+    <link href="/Content/toastr.min.css" rel="stylesheet" />
+    <script src="/Scripts/toastr.min.js"></script>
+    <script src="/Scripts/jquery-3.2.1.slim.min.js"></script>
 
 
     <title></title>
@@ -28,6 +33,9 @@
         <div class="text-center">
             <img src="WebHtmla.jpg" />
             <br />
+                 </div>
+              <div class="text-center">
+
             <strong>
                 <asp:Label ID="Label1" runat="server" Text="User:"></asp:Label></strong>
             <asp:TextBox ID="TextBox1" runat="server" class="form-control" Height="30" Width="200"></asp:TextBox>
