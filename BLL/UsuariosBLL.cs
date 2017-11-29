@@ -29,24 +29,6 @@ namespace BLL
             return false;
         }
 
-        //public static bool Guardar(Usuarios u)
-        //{
-        //    try
-        //    {
-        //        LibreriaCamiloDb db = new LibreriaCamiloDb();
-        //        {
-        //            db.Usuarios.Add(u);
-        //            db.SaveChanges();
-        //            db.Dispose();
-        //            return false;
-        //        }
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return true;
-        //        throw;
-        //    }
-        //}
 
         public static bool Authenticar(Usuarios usuario)
 		{

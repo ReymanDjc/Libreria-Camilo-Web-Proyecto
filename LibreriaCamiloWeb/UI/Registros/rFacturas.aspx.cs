@@ -32,7 +32,6 @@ namespace LibreriaCamiloWeb.UI.Registros
 
             }
         }
-        //Sirve para buscar 
         public void LlenarRegistro(List<Entidades.FacturasProductos> llenar)
         {
             foreach (var li in llenar)
@@ -44,7 +43,6 @@ namespace LibreriaCamiloWeb.UI.Registros
             }
         }
 
-        //ASigana datos a guardar
         public void LlenarDatos(Entidades.FacturasProductos detalle)
         {
             foreach (GridViewRow dr in FacturaGridView.Rows)
@@ -129,7 +127,7 @@ namespace LibreriaCamiloWeb.UI.Registros
                 if (agregado)
                 {
 
-                    Utilidades.ShowToastr(this, " Articulo ya esta en factura -Selecione otro", "Error", "info");
+                    Utilidades.ShowToastr(this, "El Producto ya esta Agregado -Selecione otro", "Error", "info");
 
                 }
                 else
@@ -138,7 +136,7 @@ namespace LibreriaCamiloWeb.UI.Registros
                     dt.Rows.Add(ProductoIdTextBox.Text, producto.Descripcion.Trim(), producto.Precio, CantidadTextBox.Text.Trim());
                     ViewState["Detalle"] = dt;
                     this.BindGrid();
-                    CalcularMonto();
+                    Calcular();
                 }
             }
         }
@@ -150,7 +148,7 @@ namespace LibreriaCamiloWeb.UI.Registros
 
             if (detallef.Detalle.Count == 0)
             {
-                Utilidades.ShowToastr(this, "Primero agregue Articulos", "Consejo", "info");
+                Utilidades.ShowToastr(this, "Agregue un Producto", "Consejo", "info");
 
             }
             else
@@ -242,7 +240,7 @@ namespace LibreriaCamiloWeb.UI.Registros
             if (string.IsNullOrWhiteSpace(FacturaIdTextBox.Text))
             {
 
-                Utilidades.ShowToastr(this, "Campo Id Vacio", "Error", "info");
+                Utilidades.ShowToastr(this, "Id Vacio", "Error", "info");
             }
             else
             {
@@ -263,36 +261,24 @@ namespace LibreriaCamiloWeb.UI.Registros
                     }
                     else
                     {
-                        Utilidades.ShowToastr(this, "Problemas Al Eliminar", "Error", "error");
+                        Utilidades.ShowToastr(this, "Problemas para Eliminar", "Error", "error");
                     }
 
                 }
                 else
                 {
-                    Utilidades.ShowToastr(this, "No hay Factura", "Informacion", "info");
+                    Utilidades.ShowToastr(this, "No Existe Factura", "Informacion", "info");
                 }
             }
         }
 
 
 
-        public void CalcularMonto()
+        public void Calcular()
         {
             decimal total = 0;
             decimal subTotal = 0m;
             decimal itbis = 0;
-
-            /*foreach (GridViewRow precio in FacturaGridView.Rows)
-            {
-
-                subTotal += Convert.ToDecimal(PrecioTextBox.Text);
-                itbis += (subTotal * 0.18m);
-                total += (subTotal + itbis);
-
-                SubtotalTextBox.Text = Convert.ToString(subTotal);
-                TotalTextBox.Text = Convert.ToString(total);
-                ItbisTextBox.Text = Convert.ToString(itbis);
-            }*/
 
             if (FacturaGridView.Rows.Count > 0)
              {
@@ -309,25 +295,6 @@ namespace LibreriaCamiloWeb.UI.Registros
                  }
              }
             
-             /*if (DescuentoTextBox.Text == "")
-             {
-                 DescuentoTextBox.Text = Convert.ToString(0);
-             }
-             else
-             {
-                 if (TextBoxSubTotal.Text == "")
-                 {
-                     Utilidades.ShowToastr(this, "Primero Agregue articulos", "ANTENCION ", "info");
-                 }
-                 else
-                 {
-                     descuento = ((Convert.ToDecimal(DescuentoTextBox.Text) / porciento) * Convert.ToDecimal(TextBoxSubTotal.Text));
-                     Math.Round(total = (subTotal + itbs) - descuento);
-                     TextBoxTotal.Text = total.ToString();
-                 }*/
-
-
-
         }
         }
     }

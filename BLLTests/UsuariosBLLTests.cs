@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Entidades;
 
 namespace BLL.Tests
 {
@@ -15,15 +14,13 @@ namespace BLL.Tests
         [TestMethod()]
         public void GuardarTest()
         {
-            //Usuarios u = new Usuarios();
-            //Assert.IsNotNull(UsuariosBLL.Guardar(u));
-            Assert.IsTrue(BLL.UsuariosBLL.Guardar(new Entidades.Usuarios(1, "Sea01", "Seatiel", "bhj12345", DateTime.Now)));
+            Assert.Fail();
         }
 
         [TestMethod()]
         public void AuthenticarTest()
         {
-            Assert.AreNotEqual(AuthenticarTest());
+            Assert.Fail();
         }
 
         [TestMethod()]
