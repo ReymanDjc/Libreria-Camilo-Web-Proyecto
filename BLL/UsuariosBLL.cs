@@ -5,30 +5,50 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using System.Data.Entity;
 using System.Threading.Tasks;
 
 namespace BLL
 {
     public class UsuariosBLL
     {
-		public static bool Guardar(Usuarios usuario)
-		{
-			using (var conec = new Repository<Usuarios>())
-			{
-				try
-				{
-					return conec.Guardar(usuario);
-				}
-				catch (Exception)
-				{
+        public static bool Guardar(Usuarios usuario)
+        {
+            using (var conec = new Repository<Usuarios>())
+            {
+                try
+                {
+                    return conec.Guardar(usuario);
+                }
+                catch (Exception)
+                {
 
-					throw;
-				}
-			}
-			return false;
-		}
+                    throw;
+                }
+            }
+            return false;
+        }
 
-		public static bool Authenticar(Usuarios usuario)
+        //public static bool Guardar(Usuarios u)
+        //{
+        //    try
+        //    {
+        //        LibreriaCamiloDb db = new LibreriaCamiloDb();
+        //        {
+        //            db.Usuarios.Add(u);
+        //            db.SaveChanges();
+        //            db.Dispose();
+        //            return false;
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
+        //        return true;
+        //        throw;
+        //    }
+        //}
+
+        public static bool Authenticar(Usuarios usuario)
 		{
 			using (var conec = new Repository<Usuarios>())
 			{

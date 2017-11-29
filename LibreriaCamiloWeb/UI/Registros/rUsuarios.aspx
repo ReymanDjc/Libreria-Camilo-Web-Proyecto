@@ -98,7 +98,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <asp:TextBox ID="FechaTextBox" runat="server" TextMode="Date" class="form-control" Height="30" Width="300"></asp:TextBox>
+                            <asp:TextBox ID="FechaTextBox" runat="server" type="date" class="form-control" Height="30" Width="300"></asp:TextBox>
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Campos Obligatorios" ControlToValidate="FechaTextBox" ForeColor="Red" Font-Bold="True">*</asp:RequiredFieldValidator>

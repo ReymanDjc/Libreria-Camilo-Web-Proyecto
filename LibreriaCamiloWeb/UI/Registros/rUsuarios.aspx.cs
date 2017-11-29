@@ -49,7 +49,7 @@ namespace LibreriaCamiloWeb.UI.Registros
 				NombreTextBox.Text = usuario.Nombres;
 				ClaveTextBox.Text = usuario.Clave;
 				ConfirmarClaveTextBox.Text = usuario.ConfirmarClave;
-				FechaTextBox.Text = usuario.Fecha.ToString();
+				FechaTextBox.Text = usuario.Fecha.ToString("yyyy-MM-dd");
 				Utilidades.ShowToastr(this, "Encontrado", "Usuario", "info");
 			}
 			else

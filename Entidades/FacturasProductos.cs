@@ -28,21 +28,19 @@ namespace Entidades
 			impresion = new List<FacturasProductos>();
 		}
 
-		public void AgregarDetalle(int productoId, int id, int facturaid, string descripcion, decimal precio, decimal cantidad)
+		public void AgregarDetalle(int productoId, string descripcion, decimal precio, decimal cantidad)
 		{
-			this.Detalle.Add(new FacturasProductos(productoId,id, facturaid, descripcion, precio, cantidad));
+			this.Detalle.Add(new FacturasProductos(productoId, descripcion, precio, cantidad));
 
 			impresion = Detalle;
 		}
 
-		public FacturasProductos(int productoId,int id, int facturaid, string descripcion, decimal precio, decimal cantidad)
+		public FacturasProductos(int productoId, string descripcion, decimal precio, decimal cantidad)
         {
             this.ProductoId = productoId;
             this.Descripcion = descripcion;
             this.Cantidad = cantidad;
             this.Precio = precio;
-			this.Id = id;
-			this.FacturaId = facturaid; 
 			Detalle = new List<FacturasProductos>();
 			impresion = new List<FacturasProductos>();
 		}

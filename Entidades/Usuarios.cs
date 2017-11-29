@@ -20,5 +20,16 @@ namespace Entidades
 		{
 
 		}
-	}
+
+        public Usuarios(int usuarioid, string nombres, string clave, string confirmar, DateTime fecha)
+        {
+            this.UsuarioId = usuarioid;
+            this.Nombres = nombres;
+            this.Clave = clave;
+            this.ConfirmarClave = confirmar;
+            this.Fecha = fecha;
+        }
+
+        
+    }
 }
