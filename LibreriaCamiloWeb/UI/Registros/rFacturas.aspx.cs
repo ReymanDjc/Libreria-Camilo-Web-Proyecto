@@ -54,8 +54,8 @@ namespace LibreriaCamiloWeb.UI.Registros
                    );
             }
 
-            factura = new Entidades.Facturas(0, Convert.ToDateTime(FechaTextBox.Text),
-                Convert.ToDecimal(SubtotalTextBox.Text), 0.18m,
+            factura = new Entidades.Facturas(Convert.ToDateTime(FechaTextBox.Text),
+                Convert.ToDecimal(SubtotalTextBox.Text), Convert.ToDecimal(ItbisTextBox.Text),
                 Convert.ToDecimal(TotalTextBox.Text), Utilidades.TOINT(ClienteIdTextBox.Text), NombreTextBox.Text);
         }
 
@@ -138,7 +138,7 @@ namespace LibreriaCamiloWeb.UI.Registros
                     dt.Rows.Add(ProductoIdTextBox.Text, producto.Descripcion.Trim(), producto.Precio, CantidadTextBox.Text.Trim());
                     ViewState["Detalle"] = dt;
                     this.BindGrid();
-                    CantidadTextBox.Text = "";
+                    CalcularMonto();
                 }
             }
         }
@@ -193,7 +193,7 @@ namespace LibreriaCamiloWeb.UI.Registros
 
         protected void BuscarButton_Click(object sender, EventArgs e)
         {
-            var factura = new Facturas;
+            var factura = new Facturas();
 
             if (string.IsNullOrWhiteSpace(FacturaIdTextBox.Text))
             {
@@ -208,6 +208,7 @@ namespace LibreriaCamiloWeb.UI.Registros
                 {
                     Limpiar();
 
+                    Entidades.Clientes cli = new Clientes();
                     listaRelaciones = BLL.FacturasProductosBLL.GetList(A => A.FacturaId == factura.FacturaId);
 
                     if (factura != null)
@@ -219,6 +220,10 @@ namespace LibreriaCamiloWeb.UI.Registros
                         else
                         {
                             LlenarRegistro(listaRelaciones);
+                            NombreTextBox.Text = factura.NombreCliente;
+                            SubtotalTextBox.Text = Convert.ToString(factura.SubTotal);
+                            ItbisTextBox.Text = Convert.ToString(factura.Itbis);
+                            TotalTextBox.Text = Convert.ToString(factura.Total);
                             FechaTextBox.Text = factura.Fecha.ToString("yyyy-MM-dd");
 
                             Utilidades.ShowToastr(this, "Sus Resultados", "Resultados", "success");  
@@ -268,5 +273,61 @@ namespace LibreriaCamiloWeb.UI.Registros
                 }
             }
         }
+
+
+
+        public void CalcularMonto()
+        {
+            decimal total = 0;
+            decimal subTotal = 0m;
+            decimal itbis = 0;
+
+            /*foreach (GridViewRow precio in FacturaGridView.Rows)
+            {
+
+                subTotal += Convert.ToDecimal(PrecioTextBox.Text);
+                itbis += (subTotal * 0.18m);
+                total += (subTotal + itbis);
+
+                SubtotalTextBox.Text = Convert.ToString(subTotal);
+                TotalTextBox.Text = Convert.ToString(total);
+                ItbisTextBox.Text = Convert.ToString(itbis);
+            }*/
+
+            if (FacturaGridView.Rows.Count > 0)
+             {
+                 foreach (GridViewRow precio in FacturaGridView.Rows)
+                 {
+                     Math.Round(subTotal += Convert.ToDecimal(precio.Cells[2].Text));
+                     Math.Round(itbis += (subTotal * 0.18m));
+                     Math.Round(total += (itbis + subTotal));
+
+                    SubtotalTextBox.Text = subTotal.ToString();
+                    ItbisTextBox.Text = itbis.ToString();
+                    TotalTextBox.Text = total.ToString();
+
+                 }
+             }
+            
+             /*if (DescuentoTextBox.Text == "")
+             {
+                 DescuentoTextBox.Text = Convert.ToString(0);
+             }
+             else
+             {
+                 if (TextBoxSubTotal.Text == "")
+                 {
+                     Utilidades.ShowToastr(this, "Primero Agregue articulos", "ANTENCION ", "info");
+                 }
+                 else
+                 {
+                     descuento = ((Convert.ToDecimal(DescuentoTextBox.Text) / porciento) * Convert.ToDecimal(TextBoxSubTotal.Text));
+                     Math.Round(total = (subTotal + itbs) - descuento);
+                     TextBoxTotal.Text = total.ToString();
+                 }*/
+
+
+
+        }
+        }
     }
-}

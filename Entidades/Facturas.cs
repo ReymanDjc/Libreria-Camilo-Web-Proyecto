@@ -29,10 +29,9 @@ namespace Entidades
             //this.Relacion = new HashSet<FacturasProductos>();
         }
 
-		public Facturas(int facturaid, DateTime fecha, decimal subtototal, decimal itbs, 
+		public Facturas(DateTime fecha, decimal subtototal, decimal itbs, 
 			decimal total, int clienteid, string nombrecliente )
 		{
-			this.FacturaId = facturaid;
 			this.Fecha = fecha;
 			this.SubTotal = subtototal;
 			this.Itbis = itbs;
