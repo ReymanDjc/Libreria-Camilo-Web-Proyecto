@@ -16,6 +16,7 @@ namespace LibreriaCamiloWeb.UI.Consultas
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
+            
 			UsuariosGridView.DataBind();
 		}
 
@@ -37,7 +38,10 @@ namespace LibreriaCamiloWeb.UI.Consultas
 			else
 			if (UsuariosDropDownList.SelectedIndex == 1)
 			{
-				Lista = UsuariosBLL.GetList(p => p.Fecha >= desde.Date && p.Fecha <= hasta.Date);
+                desde = Convert.ToDateTime(FechaunoTextBox.Text);
+                hasta = Convert.ToDateTime(FechadosTextBox.Text);
+
+                Lista = UsuariosBLL.GetList(p => p.Fecha >= desde.Date && p.Fecha <= hasta.Date);
 
 				UsuariosGridView.DataSource = Lista;
 				UsuariosGridView.DataBind();
@@ -45,10 +49,9 @@ namespace LibreriaCamiloWeb.UI.Consultas
 			else
 			if (UsuariosDropDownList.SelectedIndex == 2)
 			{
-				//Lista = UsuariosBLL.GetList(p => p.UsuarioId == Convert.ToInt32(FiltrarTextBox));
 
-				UsuariosGridView.DataSource = UsuariosBLL.GetList(p => p.Nombres == FiltrarTextBox.Text);
-				UsuariosGridView.DataBind();
+                UsuariosGridView.DataSource = UsuariosBLL.GetList(p => p.Nombres == FiltrarTextBox.Text);
+                UsuariosGridView.DataBind();
 			}
 			else
 			if (UsuariosDropDownList.SelectedIndex == 3)

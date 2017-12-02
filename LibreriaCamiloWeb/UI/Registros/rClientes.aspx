@@ -19,6 +19,7 @@
                            </td>
                            <td>
                               &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<asp:Button ID="BuscarButton" runat="server" class="btn btn-info" Text="Buscar" OnClick="BuscarButton_Click" ValidationGroup="Buscar" />
+                               <asp:RegularExpressionValidator ID="RegularExpressionValidator7" runat="server" ControlToValidate="ClienteIdTextBox" ErrorMessage="Solo Numeros y Numeros positivos" ForeColor="Red" ValidationExpression="\d+" ValidationGroup="Buscar"></asp:RegularExpressionValidator>
                            </td>
                        </tr>
                    </table>                
@@ -105,7 +106,7 @@
                     <asp:Button ID="GuardarButton" runat="server" class="btn btn-info" Text="Guardar" OnClick="GuardarButton_Click" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                     <asp:Button ID="EliminarButton" runat="server" class="btn btn-info" Text="Eliminar" OnClick="EliminarButton_Click" />   
                 </div>
-
+                <br />
             </div>
 
         </div>

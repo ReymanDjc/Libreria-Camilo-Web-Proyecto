@@ -1,0 +1,4 @@
+  <connectionStrings>
+    <add name="ConStr" connectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\LibreriaCamiloDb.mdf;Integrated Security=True;Connect Timeout=30" providerName="System.Data.SqlClient" />
+ 
+  </connectionStrings>

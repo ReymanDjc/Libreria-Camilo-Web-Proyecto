@@ -20,8 +20,8 @@ namespace LibreriaCamiloWeb
 		{
             var usuario = new Entidades.Usuarios();
             usuario = BLL.UsuariosBLL.Buscar(b => b.Nombres == TextBox1.Text);
-            if(PasswordTextBox.Text != "")
-            {
+            if (PasswordTextBox.Text != "")
+            {            
                 if (usuario.Clave == PasswordTextBox.Text)
                 {
                     FormsAuthentication.RedirectFromLoginPage(TextBox1.Text, true);
@@ -30,6 +30,7 @@ namespace LibreriaCamiloWeb
                 {
                     Utilidades.ShowToastr(this, "Usuario y/o Contraseña Incorrectas", "ERROR", "info");
                 }
+                
             }
             else
             {

@@ -38,18 +38,18 @@
             <div class="co-12 col-sm-2 col-md-3 col-lg-5"></div>
             <div class="col-12 col-sm-8 col-md-6 col-lg-4">
                 <div class="form-group">
-                    <strong>
+                   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<strong>
                         <asp:Label ID="Label1" runat="server" Text="User:"></asp:Label></strong>
                     <asp:TextBox ID="TextBox1" runat="server" class="form-control" Height="30" Width="200"></asp:TextBox>
                 </div>
 
                 <div class="form-group">
-                    <strong>
+                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<strong>
                         <asp:Label ID="Label2" runat="server" Text="Password:"></asp:Label></strong>
                     <asp:TextBox ID="PasswordTextBox" runat="server" TextMode="Password" class="form-control" Height="30" Width="200"></asp:TextBox>
-                    <br />
+
                 </div>
-                <asp:Button ID="LoginButton" runat="server" class="btn btn-info" Text="Login" OnClick="LoginButton_Click" />
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<asp:Button ID="LoginButton" runat="server" class="btn btn-info" Text="Login" OnClick="LoginButton_Click" />
             </div>
         </div>
     </form>

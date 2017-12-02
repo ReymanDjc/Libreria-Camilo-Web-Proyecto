@@ -127,6 +127,7 @@
     <Content Include="UI\Registros\rUsuarios.aspx" />
     <Content Include="UI\Registros\WebHtml.jpg" />
     <Content Include="UI\Reportes\ReporteCliente.aspx" />
+    <Content Include="UI\Reportes\ReporteFactura.aspx" />
     <Content Include="UI\Reportes\ReporteProducto.aspx" />
     <Content Include="UI\Reportes\ReporteUsuario.aspx" />
     <Content Include="WebHtml.jpg" />
@@ -143,6 +144,7 @@
       <DependentUpon>LibreriaCamiloDbDataSet.xsd</DependentUpon>
     </Content>
     <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\LibreriaCamiloWeb - Web Deploy.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -269,6 +271,13 @@
     <Compile Include="UI\Reportes\ReporteCliente.aspx.designer.cs">
       <DependentUpon>ReporteCliente.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UI\Reportes\ReporteFactura.aspx.cs">
+      <DependentUpon>ReporteFactura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Reportes\ReporteFactura.aspx.designer.cs">
+      <DependentUpon>ReporteFactura.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UI\Reportes\ReporteProducto.aspx.cs">
       <DependentUpon>ReporteProducto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -306,6 +315,7 @@
   <ItemGroup>
     <EmbeddedResource Include="UI\Reportes\ProductosReport.rdlc" />
     <EmbeddedResource Include="UI\Reportes\ClientesReport.rdlc" />
+    <EmbeddedResource Include="UI\Reportes\FacturasReport.rdlc" />
     <EmbeddedResource Include="UI\Reportes\UsuariosReport.rdlc" />
   </ItemGroup>
   <PropertyGroup>

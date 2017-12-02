@@ -42,7 +42,15 @@ namespace LibreriaCamiloWeb.UI.Consultas
 				ProductosGridView.DataSource = ProductosBLL.GetList(p => p.Descripcion == FiltrarTextBox.Text);
 				ProductosGridView.DataBind();
 			}
-		}
+            else
+            if (ProductosDropDownList.SelectedIndex == 3)
+            {
+                int id = Utilidades.TOINT(FiltrarTextBox.Text);
+                Lista = ProductosBLL.GetList(p => p.Cantidad == id);
+                ProductosGridView.DataSource = ProductosBLL.GetList(p => p.Cantidad == id);
+                ProductosGridView.DataBind();
+            }
+        }
 
 		protected void ImprimirButton_Click(object sender, EventArgs e)
 		{

@@ -29,7 +29,11 @@
         </div>
 
         <div>
-            <asp:GridView ID="ClientesGridView" runat="server"></asp:GridView>
+            <br />
+            <asp:GridView ID="ClientesGridView" runat="server" CssClass=" table table-striped table-hover table-bordered">
+                <HeaderStyle BackColor="LightBlue" Font-Bold="True" ForeColor="black" />
+            </asp:GridView>
+
         </div>
 
     </div>

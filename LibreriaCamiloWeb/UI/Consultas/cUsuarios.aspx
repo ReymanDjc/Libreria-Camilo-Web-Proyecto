@@ -8,14 +8,13 @@
         <div>
             <table>
                 <tr>
-                    <td>
-                        &nbsp&nbsp<asp:DropDownList ID="UsuariosDropDownList" class="btn btn-info" runat="server">
-                            <asp:ListItem>Todos</asp:ListItem>
-                            <asp:ListItem>Fecha</asp:ListItem>
-                            <asp:ListItem>Nombre</asp:ListItem>
-                            <asp:ListItem>UsuarioId</asp:ListItem>
-                        </asp:DropDownList>
-                            </td>
+                    <td>&nbsp&nbsp<asp:DropDownList ID="UsuariosDropDownList" class="btn btn-info" runat="server">
+                        <asp:ListItem>Todos</asp:ListItem>
+                        <asp:ListItem>Fecha</asp:ListItem>
+                        <asp:ListItem>Nombre</asp:ListItem>
+                        <asp:ListItem>UsuarioId</asp:ListItem>
+                    </asp:DropDownList>
+                    </td>
                     <td>&nbsp&nbsp<asp:TextBox ID="FiltrarTextBox" runat="server" class="form-control" Height="30" Width="150"></asp:TextBox>&nbsp&nbsp
                             </td>
                     <td>&nbsp&nbsp<asp:Button ID="FiltrarButton" runat="server" class="btn btn-info" Text="Filtrar" OnClick="FiltrarButton_Click" />&nbsp&nbsp
@@ -47,9 +46,11 @@
 
 
         </div>
-
+        <br />
         <div>
-            <asp:GridView ID="UsuariosGridView" runat="server"></asp:GridView>
+            <asp:GridView ID="UsuariosGridView" runat="server" CssClass=" table table-striped table-hover table-bordered">
+                <HeaderStyle BackColor="LightBlue" Font-Bold="True" ForeColor="black" />
+            </asp:GridView>
         </div>
 
     </div>

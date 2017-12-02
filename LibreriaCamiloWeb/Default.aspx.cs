@@ -12,7 +12,8 @@ namespace LibreriaCamiloWeb
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			//Utilidades.ShowToastr(this, "Bienvenidos", "Hola", "info");
-		}
+            Utilidades.ShowToastr(this, "Bienvenidos", "", "info");
+           
+        }
 	}
 }

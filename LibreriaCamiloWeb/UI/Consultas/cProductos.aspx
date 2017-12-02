@@ -12,6 +12,7 @@
                                     <asp:ListItem>Todos</asp:ListItem>
                                     <asp:ListItem>ProductoId</asp:ListItem>
                                     <asp:ListItem>Descripcion</asp:ListItem>
+                                    <asp:ListItem>Cantidad</asp:ListItem>
                                 </asp:DropDownList>&nbsp&nbsp
                             </td>
                             <td>
@@ -30,7 +31,10 @@
                 </div>
 
                 <div>
-                    <asp:GridView ID="ProductosGridView" runat="server"></asp:GridView>
+                    <br />
+                    <asp:GridView ID="ProductosGridView" runat="server" CssClass=" table table-striped table-hover table-bordered">
+                <HeaderStyle BackColor="LightBlue" Font-Bold="True" ForeColor="black" />
+            </asp:GridView>
                 </div>
 
             </div>

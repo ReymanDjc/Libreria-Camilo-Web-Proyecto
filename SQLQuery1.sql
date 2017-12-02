@@ -1,1 +1,1 @@
-﻿truncate table Facturasproductos;
+﻿truncate table Clientes;

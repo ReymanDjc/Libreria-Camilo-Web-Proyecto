@@ -37,11 +37,48 @@ namespace LibreriaCamiloWeb.UI.Registros
             foreach (var li in llenar)
             {
                 dt = (DataTable)ViewState["Detalle"];
-                dt.Rows.Add(li.ProductoId, li.Descripcion, li.Cantidad, li.Precio);
+                dt.Rows.Add(li.ProductoId, li.Descripcion, li.Precio, li.Cantidad);
                 ViewState["Detalle"] = dt;
                 this.BindGrid();
             }
         }
+        
+
+
+        private void EliminarExitencia()
+        {
+
+            decimal descuento = 0;
+            Entidades.Productos Descontar = new Entidades.Productos();
+            foreach (GridViewRow producto in FacturaGridView.Rows)
+            {
+
+                int productoId = Convert.ToInt32(producto.Cells[0].Text); ///Celda 2 es el idArticulo antes esta detalleid y facturaid
+                descuento = Convert.ToDecimal(producto.Cells[3].Text); //Celda 4 es la cantiddad
+
+                Descontar = BLL.ProductosBLL.BuscarOtro(productoId);
+                Descontar.Cantidad -= Convert.ToInt32(descuento);
+                BLL.ProductosBLL.Modificar(Descontar);
+            }
+
+        }
+
+
+        private void SumarExistencia()
+        {
+            decimal suma = 0;
+            foreach (GridViewRow producto in FacturaGridView.Rows)
+            {
+                Entidades.FacturasProductos detallef = new Entidades.FacturasProductos();
+                int productoId = Convert.ToInt32(producto.Cells[0].Text); ///Celda 2 es el idArticulo antes esta detalleid y facturaid
+                suma = Convert.ToDecimal(producto.Cells[3].Text); //Celda 4 es la cantiddad
+
+                detallef.Producto = BLL.ProductosBLL.BuscarOtro(productoId);
+                detallef.Producto.Cantidad += Convert.ToInt32(suma);
+                BLL.ProductosBLL.Modificar(detallef.Producto);
+            }
+        }
+
 
         public void LlenarDatos(Entidades.FacturasProductos detalle)
         {
@@ -50,11 +87,13 @@ namespace LibreriaCamiloWeb.UI.Registros
                 detalle.AgregarDetalle(Utilidades.TOINT(dr.Cells[0].Text),
                  dr.Cells[1].Text, Convert.ToDecimal(dr.Cells[2].Text), Convert.ToDecimal(dr.Cells[3].Text)
                    );
+
             }
 
             factura = new Entidades.Facturas(Convert.ToDateTime(FechaTextBox.Text),
                 Convert.ToDecimal(SubtotalTextBox.Text), Convert.ToDecimal(ItbisTextBox.Text),
                 Convert.ToDecimal(TotalTextBox.Text), Utilidades.TOINT(ClienteIdTextBox.Text), NombreTextBox.Text);
+           
         }
 
         protected void BindGrid()
@@ -138,6 +177,7 @@ namespace LibreriaCamiloWeb.UI.Registros
                     this.BindGrid();
                     Calcular();
                 }
+                LimpiarProductos();
             }
         }
 
@@ -155,6 +195,7 @@ namespace LibreriaCamiloWeb.UI.Registros
             {
                 if (BLL.FacturasBLL.Guardar(factura, detallef.Detalle))
                 {
+                    EliminarExitencia();
                     Utilidades.ShowToastr(this, "Guardo", "Correcto", "success");
                 }
                 else
@@ -162,6 +203,7 @@ namespace LibreriaCamiloWeb.UI.Registros
                     Utilidades.ShowToastr(this, "Error", "Error", "error");
 
                 }
+                Limpiar();
             }
         }
 
@@ -171,10 +213,11 @@ namespace LibreriaCamiloWeb.UI.Registros
             ViewState["Detalle"] = dt;
 
             this.BindGrid();
-
+            FacturaIdTextBox.Text = "";
             TotalTextBox.Text = "";
             ClienteIdTextBox.Text = "";
             NombreTextBox.Text = "";
+            FechaTextBox.Text = "";
             ProductoIdTextBox.Text = "";
             DescripcionTextBox.Text = "";
             PrecioTextBox.Text = "";
@@ -183,6 +226,15 @@ namespace LibreriaCamiloWeb.UI.Registros
             ItbisTextBox.Text = "";
             TotalTextBox.Text = "";
         }
+
+        private void LimpiarProductos()
+        {
+            ProductoIdTextBox.Text = "";
+            DescripcionTextBox.Text = "";
+            PrecioTextBox.Text = "";
+            CantidadTextBox.Text = "";
+        }
+
 
         protected void NuevoButton_Click(object sender, EventArgs e)
         {
@@ -218,6 +270,7 @@ namespace LibreriaCamiloWeb.UI.Registros
                         else
                         {
                             LlenarRegistro(listaRelaciones);
+                            ClienteIdTextBox.Text = Convert.ToString(factura.ClienteId);
                             NombreTextBox.Text = factura.NombreCliente;
                             SubtotalTextBox.Text = Convert.ToString(factura.SubTotal);
                             ItbisTextBox.Text = Convert.ToString(factura.Itbis);
@@ -252,9 +305,9 @@ namespace LibreriaCamiloWeb.UI.Registros
                 {
                     if (BLL.FacturasBLL.EliminarRelacion(factura))
                     {
-
+                        SumarExistencia();
                         Limpiar();
-
+                       
                         factura = new Entidades.Facturas();
                         Utilidades.ShowToastr(this, "Elimino Correctamente", "ELIMINADO", "success");
 
@@ -284,16 +337,18 @@ namespace LibreriaCamiloWeb.UI.Registros
              {
                  foreach (GridViewRow precio in FacturaGridView.Rows)
                  {
-                     Math.Round(subTotal += Convert.ToDecimal(precio.Cells[2].Text));
-                     Math.Round(itbis += (subTotal * 0.18m));
-                     Math.Round(total += (itbis + subTotal));
+                     Math.Round(subTotal += Convert.ToDecimal(precio.Cells[2].Text) * Convert.ToInt32(precio.Cells[3].Text));
+                     Math.Round(itbis += (Convert.ToDecimal(precio.Cells[2].Text) * 0.18m));
+                     
 
                     SubtotalTextBox.Text = subTotal.ToString();
                     ItbisTextBox.Text = itbis.ToString();
-                    TotalTextBox.Text = total.ToString();
+                    
 
                  }
-             }
+                Math.Round(total += (itbis + subTotal));
+                TotalTextBox.Text = total.ToString();
+            }
             
         }
         }
